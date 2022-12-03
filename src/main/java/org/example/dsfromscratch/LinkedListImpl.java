@@ -24,6 +24,7 @@ class Node {
     public void setNext(Node next) {
         this.next = next;
     }
+
 }
 
 public class LinkedListImpl {
@@ -33,15 +34,31 @@ public class LinkedListImpl {
         this.head = null;
     }
 
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
     public void traverse() {
         var current = this.head;
         System.out.println("Linked List: ");
         System.out.println(current);
-        while(current!=null) {
-            System.out.printf("(node value: %s, hash: %H)->", current.value, current.value);
+        while(current != null) {
+            System.out.printf("(node value: %s, hash: %H)->", current.getValue(), current.hashCode());
             current = current.next;
         }
         System.out.println();
+    }
+
+    public void insertBeg(String value) {
+        var newNode = new Node(value);
+
+        if(this.head == null) {
+            this.head = newNode;
+            return;
+        }
+
+        newNode.setNext(this.head);
+        this.head = newNode;
     }
 
     public void insertEnd(String value) {
@@ -50,7 +67,7 @@ public class LinkedListImpl {
 
         // insert in case of empty list
         if(current == null) {
-            this.head = newNode;
+            this.setHead(newNode);
             return;
         }
 
@@ -77,10 +94,11 @@ public class LinkedListImpl {
         list.insertEnd("jumped");
         list.insertEnd("over the lazy dawg");
 
+        list.insertBeg("all Started with: ");
+        list.insertBeg("It");
+
+
         // traverse the linked list
         list.traverse();
     }
-
-
-
 }
