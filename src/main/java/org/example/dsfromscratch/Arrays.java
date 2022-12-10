@@ -16,9 +16,11 @@ public class Arrays {
         int[] arr2 = {1, 2, 3, 4}; // another way to initialize array if previous values are known
         print1DArray(arr2);
     }
+
     public static void print1DArray(int[] arr) {
         System.out.printf("hashCode of arr: %h\n",arr.hashCode());
         System.out.println("Print array using for i statement: ");
+
         for(int i = 0; i<arr.length; i++)
             System.out.printf("arr[%d] = %d, ", i, arr[i]);
         System.out.println();
